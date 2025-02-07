@@ -1,10 +1,29 @@
-# Task 9: Random Number Function
+# Write your solution after the ExamSubmission class
+# DO NOT CHANGE THE CLASS
+class ExamSubmission:
+    def __init__(self, examinee: str, points: int):
+        self.examinee = examinee
+        self.points = points
 
-import random
+    def __str__(self):
+        return f'Exam submission (examinee: {self.examinee}, points: {self.points})'
 
-def get_random_number():
-    return random.randint(1, 6)
 
-# Print out the number where the function is called
-random_number = get_random_number()
-print("Random Number:", random_number)
+    
+# WRITE YOUR OWN SOLUTION HERE:
+def passed(submissions: list, lowest_passing: int):
+    return [submission for submission in submissions if submission.points >= lowest_passing]
+
+
+#You may use the following code to test your function:
+
+if __name__ == "__main__":
+    s1 = ExamSubmission("Peter", 12)
+    s2 = ExamSubmission("Pippa", 19)
+    s3 = ExamSubmission("Paul", 15)
+    s4 = ExamSubmission("Phoebe", 9)
+    s5 = ExamSubmission("Persephone", 17)
+
+    passes = passed([s1, s2, s3, s4, s5], 15)
+    for passing in passes:
+        print(passing)

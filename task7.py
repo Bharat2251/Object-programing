@@ -1,14 +1,13 @@
-# Task 7: Arithmetic Progression
+class Pet:
+    def __init__(self, name, species, year_of_birth):
+        self.name = name
+        self.species = species
+        self.year_of_birth = year_of_birth
 
-def arithmetic_progression(max_value):
-    terms = [3 * i for i in range(1, (max_value // 3) + 1)]
-    return terms, sum(terms), sum(x ** 2 for x in terms)
+def new_pet(name: str, species: str, year_of_birth: int) -> Pet:
+    return Pet(name, species, year_of_birth)
 
-# Get user input
-max_value_ap = int(input("Enter the maximum value for the arithmetic progression: "))
-ap_terms, ap_sum, ap_sum_squared = arithmetic_progression(max_value_ap)
-
-# Print results
-print("Arithmetic Progression Terms:", ap_terms)
-print("Sum of Terms:", ap_sum)
-print("Sum of Squared Terms:", ap_sum_squared)
+fluffy = new_pet("Fluffy", "dog", 2017)
+print(fluffy.name)  
+print(fluffy.species)  
+print(fluffy.year_of_birth)  

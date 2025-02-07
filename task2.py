@@ -1,15 +1,62 @@
-# Task 2: Lists of Numbers and Strings
+class TrainCarriage:
+    def __init__(self, carriage_id, total_seats):
+        
+        self.carriage_id = carriage_id
+        self.total_seats = total_seats
+        self.reserved_seats = []
 
-# Part 1 - User input
-number_list = [int(input("Enter a number: ")) for _ in range(10)]
-string_list = [input("Enter a string: ") for _ in range(10)]
+    def reserve_seat(self, seat_number):
+        
+        if seat_number not in range(1, self.total_seats + 1):
+            return "Invalid seat number."
+        if seat_number in self.reserved_seats:
+            return f"Seat {seat_number} is already reserved."
+        
+        self.reserved_seats.append(seat_number)
+        return f"Seat {seat_number} reserved."
 
-# Part 2 - Randomly generated numbers
-import random
-random_numbers = [random.randint(1, 100) for _ in range(10)]
+    def cancel_reservation(self, seat_number):
+        
+        if seat_number not in self.reserved_seats:
+            return f"Seat {seat_number} is not reserved."
+        
+        self.reserved_seats.remove(seat_number)
+        return f"Seat {seat_number} reservation canceled."
 
-# Print lists
-print("Number List:", number_list)
-print("String List:", string_list)
-print("Random Number List:", random_numbers)
+    def reset_reservations(self):
+        
+        self.reserved_seats.clear()
+        return "All reservations cleared."
 
+    def is_full(self):
+        
+        return len(self.reserved_seats) == self.total_seats
+
+    def get_reservation_report(self):
+        
+        reserved = sorted(self.reserved_seats)
+        available = [seat for seat in range(1, self.total_seats + 1) if seat not in self.reserved_seats]
+
+        return f"Reserved seats: {reserved}\nAvailable seats: {available}"
+
+
+carriage = TrainCarriage("A1", 5)
+
+
+for seat in [1, 3, 4]:
+    print(carriage.reserve_seat(seat))
+
+
+print(carriage.cancel_reservation(3))
+
+
+print(carriage.get_reservation_report())
+
+
+print("Is the carriage full?", carriage.is_full())
+
+
+print(carriage.reset_reservations())
+
+
+print(carriage.get_reservation_report())
