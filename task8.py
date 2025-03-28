@@ -1,19 +1,37 @@
-class Movie:
-    def __init__(self, name, director, genre, year):
-        self.name = name
-        self.director = director
-        self.genre = genre
-        self.year = year
+# Task 8: Rock-Paper-Scissors Game
 
-def movies_of_genre(movies: list, genre: str) -> list:
-    return [movie for movie in movies if movie.genre == genre]
+import random
 
-john_woo = Movie("A Better Tomorrow", "John Woo", "action", 1986)
-kungfu = Movie("Chinese Odyssey", "Stephen Chow", "comedy", 1993)
-jet_li = Movie("The Legend", "Corey Yuen", "comedy", 1993)
-hero = Movie("Hero", "Yimou Zhang", "action", 2002)
-movies = [john_woo, kungfu, jet_li, hero]
+def get_user_choice():
+    return input("Enter your choice (rock, paper, scissors): ")
 
-print("Movies in the action genre:")
-for movie in movies_of_genre(movies, "action"):
-    print(f"{movie.director}: {movie.name}")
+def get_computer_choice():
+    return random.choice(["rock", "paper", "scissors"])
+
+def determine_winner(user_choice, computer_choice):
+    if user_choice == computer_choice:
+        return "It's a tie!"
+    elif (user_choice == "rock" and computer_choice == "scissors") or \
+         (user_choice == "paper" and computer_choice == "rock") or \
+         (user_choice == "scissors" and computer_choice == "paper"):
+        return "You win!"
+    else:
+        return "Computer wins!"
+
+# Game loop
+user_wins = 0
+computer_wins = 0
+while user_wins < 3 and computer_wins < 3:
+    user_choice = get_user_choice()
+    computer_choice = get_computer_choice()
+
+    print(f"You chose {user_choice}, computer chose {computer_choice}")
+    result = determine_winner(user_choice, computer_choice)
+    print(result)
+
+    if result == "You win!":
+        user_wins += 1
+    elif result == "Computer wins!":
+        computer_wins += 1
+
+

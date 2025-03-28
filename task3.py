@@ -1,34 +1,11 @@
-import random
+# Task 3: Sorting Lists
+string_list = ['elderberry', 'date', 'cherry', 'banana', 'apple']
+number_list = [45, 12, 78, 90, 6]
+# Part 1 - Sorting numbers and strings
+sorted_numbers = sorted(number_list)
+sorted_strings = sorted(string_list)
 
-# Class definition
-class Coin:
-    def __init__(self):
-        self.sideup = 'Heads'
+# Print sorted lists
+print("Sorted Number List:", sorted_numbers)
+print("Sorted String List:", sorted_strings)
 
-    def toss_the_coin(self):
-        outcome = random.randint(0, 4)
-        if outcome == 0:
-            self.sideup = 'Heads'
-            print("The coin landed showing: Heads")
-        elif outcome == 1:
-            self.sideup = 'Tails'
-            print("The coin landed showing: Tails")
-        elif outcome == 2:
-            print("The coin landed upright on the table.")
-        elif outcome == 3:
-            print("The coin dropped on the ground and disappeared in a rabbit hole.")
-        else:
-            print("The coin defied gravity and got lost in a wormhole in space.")
-
-    def get_sideup(self):
-        return self.sideup
-
-# Main function definition
-def main():
-    my_coin = Coin()
-    print("This side is up:", my_coin.get_sideup())
-    print("Tossing the coin...")
-    my_coin.toss_the_coin()
-    print("Now this side is up:", my_coin.get_sideup())
-
-main()

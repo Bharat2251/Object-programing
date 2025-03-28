@@ -1,14 +1,35 @@
-# Define the factorials function
-def factorials(n: int) -> dict:
-    factorial_dict = {}
-    factorial = 1
-    for i in range(1, n + 1):
-        factorial *= i
-        factorial_dict[i] = factorial
-    return factorial_dict
+#Counts how many numbers in the input list are negative.
+def count_negative_numbers(numbers):
+    return sum(1 for num in numbers if num < 0)
 
-# Test the function with a different number
-k = factorials(7)
-print(k[1]) 
-print(k[3])  
-print(k[7])
+#Counts how many numbers are divides by 2 without reminder even number.
+def count_even_numbers(numbers):
+    return sum(1 for num in numbers if num % 2 == 0)
+
+#Calculates the sum of all positive numbers in the list that are divisible by 3.
+def sum_positive_divisible_by_three(numbers):
+    return sum(num for num in numbers if num > 0 and num % 3 == 0)
+
+# Initialize an empty list to store the numbers
+numbers_input = []
+
+# Continuously prompt the user to enter numbers until 0 is entered
+while True:
+    try:
+        num = int(input("Enter an integer (0 to stop): "))
+        if num == 0:
+            break
+        numbers_input.append(num)
+    except ValueError:
+        print("Please enter a valid integer.")
+
+# Task 4
+print("Number of negative integers:", count_negative_numbers(numbers_input))
+
+# Task 5
+print("Number of even integers:", count_even_numbers(numbers_input))
+
+# Task 6
+print("Sum of positive integers divisible by three:", sum_positive_divisible_by_three(numbers_input))
+
+
